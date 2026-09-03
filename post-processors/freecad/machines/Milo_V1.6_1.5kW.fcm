@@ -16,10 +16,10 @@
                     ]
                 ],
                 "limits": {
-                    "max": 305,
+                    "max": 340,
                     "min": 0
                 },
-                "max_velocity": 4000,
+                "max_velocity": 2000,
                 "parent": "Y",
                 "role": "table_linear",
                 "sequence": 1,
@@ -39,10 +39,10 @@
                     ]
                 ],
                 "limits": {
-                    "max": 200,
+                    "max": 160,
                     "min": 0
                 },
-                "max_velocity": 4000,
+                "max_velocity": 2000,
                 "parent": null,
                 "role": "table_linear",
                 "sequence": 0,
@@ -65,14 +65,14 @@
                     "max": 0,
                     "min": -120
                 },
-                "max_velocity": 2000,
+                "max_velocity": 1000,
                 "parent": null,
                 "role": "head_linear",
                 "sequence": 0,
                 "type": "linear"
             }
         },
-        "description": "Miley V2.0 desktop mill, stationary X axis, 2.2 kW spindle, Duet + RepRapFirmware with MillenniumOS",
+        "description": "Milo V1.6 BETA desktop mill, moving table in X and Y, 1.5 kW spindle, Duet + RepRapFirmware with MillenniumOS",
         "kinematics": {
             "base_frame": {
                 "orientation_quaternion": [
@@ -88,18 +88,18 @@
                 ]
             },
             "dwo_supported": false,
-            "notes": "3-axis Miley. Limits match RRF M208 soft limits, not nominal travel.",
+            "notes": "3-axis Milo V1.6 (beta). Travels and feedrates inherited from V1.5: the beta retains the V1.5 frame extrusions, linear rails, leadscrews and motors. The XY and Z plates and the anti-backlash block are new, so VERIFY limits against your own RRF M208/M203 before use.",
             "tcp_supported": false
         },
         "manufacturer": "Millennium Machines",
-        "name": "Miley V2.0 (2.2 kW)",
+        "name": "Milo V1.6 (1.5 kW) [beta]",
         "toolheads": [
             {
                 "coolant_delay": 0.0,
                 "coolant_flood": false,
                 "coolant_mist": true,
                 "id": "spindle1",
-                "max_power_kw": 2.2,
+                "max_power_kw": 1.5,
                 "max_rpm": 24000,
                 "min_rpm": 7200,
                 "name": "Spindle",
