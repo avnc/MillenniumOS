@@ -2,6 +2,31 @@
     "freecad_version": "26.3.0",
     "machine": {
         "axes": {
+            "A": {
+                "joint": [
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        1.0,
+                        0.0,
+                        0.0
+                    ]
+                ],
+                "limits": {
+                    "max": 3600,
+                    "min": -3600
+                },
+                "max_velocity": 45000,
+                "parent": "X",
+                "role": "table_rotary",
+                "sequence": 2,
+                "solution_preference": "shortest",
+                "type": "rotary",
+                "wrap_strategy": "unwound"
+            },
             "X": {
                 "joint": [
                     [
@@ -72,7 +97,7 @@
                 "type": "linear"
             }
         },
-        "description": "Milo V1.6 BETA desktop mill, moving table in X and Y, Duet + RepRapFirmware with MillenniumOS",
+        "description": "Milo V1.6 BETA desktop mill, moving table in X and Y, Duet + RepRapFirmware with MillenniumOS Fitted with the Spit Roast 4th axis (A, about X).",
         "kinematics": {
             "base_frame": {
                 "orientation_quaternion": [
@@ -87,13 +112,13 @@
                     0
                 ]
             },
-            "dwo_supported": false,
-            "notes": "3-axis Milo V1.6 (beta). Travels and rapids inherited from V1.5: the beta retains the V1.5 frame extrusions, rails, leadscrews and motors, but the XY and Z plates are new. NOMINAL published figures, not measured. Replace axis limits from your RRF M208 and max_velocity from M203, and set the spindle min_rpm/max_rpm and max_power_kw to match your spindle.",
-            "rotation_strategy": "none",
+            "dwo_supported": true,
+            "notes": "Rotary variant: Spit Roast 4th axis (A, about X) on a Milo V1.6. A-axis figures are the MosFourthAxis plugin defaults from rotary-plugin-config.g (M208 A+/-3600, M203 A45000, M201 A300, M92 A177.7919) - replace them with your own if you have recalibrated. Indexed (3+1) positioning only: the post emits G0 A<angle> and the path already rotated into the machine frame. Continuous/simultaneous 4-axis is NOT supported - it needs inverse-time feed (G93), which FreeCAD's post pipeline does not emit. Work zero must sit on the rotary centreline (probe it with M4910) because nothing applies a pivot offset.",
+            "rotation_strategy": "dwo",
             "tcp_supported": false
         },
         "manufacturer": "Millennium Machines",
-        "name": "Milo V1.6 beta",
+        "name": "Milo V1.6 beta + Rotary",
         "toolheads": [
             {
                 "coolant_delay": 0.0,
@@ -161,7 +186,9 @@
             "mos_version": "v0.5.0",
             "output_job_setup": true,
             "output_tools": true,
+            "post_rotary_move": "",
             "postamble": "M9\nG27",
+            "pre_rotary_move": "G53 G0 Z0",
             "preamble": "G90\nG94",
             "probe_mode": "ON_CHANGE",
             "safetyblock": "",
